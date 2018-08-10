@@ -25,7 +25,7 @@ SECRET_KEY = '5j$$lasjs&(d#9^&sdkk!x&f-174+t&ag=1q6&vtb@4if*gh2s'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
