@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% for announce in all_announces_by_user %}
+<h1>{{announce.user.username}}</h1>
+    <p>{{announce.body}}</p>
+
+{% endfor %}
+{% endblock content %}

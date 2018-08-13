@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+
+  <div>
+
+    <script type="text/javascript">
+
+    window.setTimeout(function() {
+        var new_url = "{% url 'list_events' %}";
+        window.location.replace(new_url)
+    }, 0);
+
+    </script>
+</div>
+
+<!--  Hi {{ user.email }}!
+
+  <p><a href="{% url 'logout' %}">logout</a></p>-->
+{% else %}
+   <h1>ABC Events</h1>
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">login</a> |
+  <a href="{% url 'signup' %}">signup</a>
+{% endif %}
+{% endblock %}

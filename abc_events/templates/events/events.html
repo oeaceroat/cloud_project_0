@@ -1,0 +1,93 @@
+{% extends "events/master.html" %}
+<!--heredamos el bloque title-->
+{% block title %}
+	Events
+{% endblock %}
+<!--finaliza el bloque title-->
+
+<!--heredamos el bloque content-->
+{% block content %}
+
+<div class="row">
+    <!-- mostramos los mensajes flash -->
+    {% if messages %}
+        <div class="alert alert-success">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        </div>
+    {% endif %}
+    <div class="panel panel-default">
+        <div class="panel-body">
+            {% if events|length > 0 %}
+                <h2>Events</h2>
+
+                    <table class="table">
+                      <thead class="thead-dark">
+                        <tr>
+                          <th scope="col">Name</th>
+                          <th scope="col">Category</th>
+                          <th scope="col">Place</th>
+                          <th scope="col">Address</th>
+                          <th scope="col">Start Date</th>
+                          <th scope="col">End Date</th>
+                          <th scope="col">Type</th>
+                          <th scope="col"></th>
+                          <th scope="col"></th>
+
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                            {% for event in events %}
+
+                                  <tr>
+                                      <td>{{ event.name }}</td>
+                                      <td>{{ event.category }}</td>
+                                      <td>{{ event.place }}</td>
+                                      <td>{{ event.address }}</td>
+                                      <td>{{ event.start_date }}</td>
+                                      <td>{{ event.end_date }}</td>
+                                       <td>{{ event.name }}</td>
+                                      <td><a href="{% url 'update_event' event.id %}" class="btn btn-success">Update</a></td>
+                                      <td><a href="{% url 'delete_event' event.id %}" class="btn btn-danger">Remove</a></td>
+
+                                  </tr>
+
+                               <!--  <div class="col-md-12" style="margin-bottom: 6px">
+                                    <div class="col-md-8">
+                                        Nombre: {{ event.name }}, Categoria: {{ event.category }}, Lugar: {{ event.place }}
+                                     </div>
+                                     <div class="col-md-8">
+                                        Direccion: {{ event.address }}, Fecha Inicio: {{ event.start_date }}, Fecha Fin: {{ event.end_date }}
+                                     </div>
+                                      <div class="col-md-8">
+                                        Tipo: {{ event.type_event }}
+                                     </div>
+                                     <div class="col-md-4">
+                                         <a href="{% url 'update_event' event.id %}" class="btn btn-success">Update</a>
+                                         <a href="{% url 'delete_event' event.id %}" class="btn btn-danger">Remove</a>
+                                     </div>
+                                 </div>-->
+                            {% endfor %}
+
+                      </tbody>
+                    </table>
+
+            {% else %}
+                <p>No hay eventos</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+<!--finaliza el bloque content-->
+<!--heredamos el bloque footer-->
+{% block footer %}
+	 <div class="navbar navbar-inverse navbar-fixed-bottom">
+	 	<div class="text-center" style="padding-top: 12px">
+	 		<small style="color: #fff">Proyecto 0 - Desarrolo de Aplicaciones Cloud</small>
+	    </div>
+	</div>
+{% endblock %}
+<!--finaliza el bloque footer-->
